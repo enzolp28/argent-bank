@@ -1,5 +1,4 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { RootState } from '../store';
 
 interface LoginRequest {
   email: string;
@@ -11,7 +10,7 @@ interface LoginResponse {
 }
 
 export const authApi = createApi({
-  reducerPath: 'authApi',
+  // reducerPath: 'authApi',
   baseQuery: fetchBaseQuery({
     baseUrl: 'http://localhost:3001/api/v1',
     

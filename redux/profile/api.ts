@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { RootState } from '../store';
+import { ResponseProfile } from './slice';
 
 interface UserProfile {
   email: string;
@@ -25,7 +26,7 @@ export const profileApi = createApi({
     },
   }),
   endpoints: (builder) => ({
-    getProfile: builder.query<UserProfile, void>({
+    getProfile: builder.query<ResponseProfile, void>({
       query: () => ({
         url: '/user/profile',
         method: 'POST',

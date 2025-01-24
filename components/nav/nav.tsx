@@ -2,12 +2,13 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import './nav.css';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { logout } from '@/redux/auth/slice';
 
 const Nav = () => {
   // recuperer le token depuis le store avec useSelector
-
-  const { isAuthenticated } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+  const { isAuthenticated } = useSelector((state) => state?.auth);
 
   return (
     <nav className="main-nav">
@@ -28,7 +29,7 @@ const Nav = () => {
             Sign In
           </Link> 
           : 
-          <Link href="/signout" className="main-nav-item">
+          <Link  onClick={() => dispatch(logout())} href="/" className="main-nav-item">
             <i className="fa fa-sign-out"></i>
             Sign Out
           </Link>}

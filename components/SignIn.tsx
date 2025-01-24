@@ -4,7 +4,7 @@ import './styles/SignIn.css';
 import { useRouter } from 'next/navigation';
 import { useLoginMutation } from '../redux/auth/api';
 import { useDispatch } from 'react-redux';
-import { setCredentials } from '../redux/auth/authSlice';
+import { setCredentials } from '../redux/auth/slice';
 
 const SignIn = () => {
   const [userEmail, setUserEmail] = useState('tony@stark.com');
