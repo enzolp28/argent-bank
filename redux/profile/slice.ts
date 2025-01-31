@@ -30,9 +30,10 @@ const profileSlice = createSlice({
   initialState,
   reducers: {
     setProfile: (state, action: PayloadAction<ResponseProfile>) => {
-      state.email = action.payload.body?.email;
-      state.firstName = action.payload.body?.firstName;
-      state.lastName = action.payload.body?.lastName;
+      const { email, firstName, lastName } = action.payload.body;
+      state.email = email;
+      state.firstName = firstName;
+      state.lastName = lastName;
     },
     // setProfileLoading: (state, action: PayloadAction<boolean>) => {
     //   state.loading = action.payload;

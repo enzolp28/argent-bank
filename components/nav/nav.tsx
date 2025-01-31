@@ -9,6 +9,7 @@ const Nav = () => {
   // recuperer le token depuis le store avec useSelector
   const dispatch = useDispatch();
   const { isAuthenticated } = useSelector((state) => state?.auth);
+  const { firstName } = useSelector((state) => state?.profile);
 
   return (
     <nav className="main-nav">
@@ -30,6 +31,7 @@ const Nav = () => {
           </Link> 
           : 
           <Link  onClick={() => dispatch(logout())} href="/" className="main-nav-item">
+            {firstName}
             <i className="fa fa-sign-out"></i>
             Sign Out
           </Link>}
