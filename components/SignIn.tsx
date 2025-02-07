@@ -18,8 +18,8 @@ const SignIn = () => {
     e.preventDefault();
     try {
       const result = await login({ email: userEmail, password }).unwrap();
-      console.log("resuuuult",result);
-      console.log("token",result?.body?.token);
+      console.log("resuuuult", result);
+      console.log("token", result?.body?.token);
       dispatch(setCredentials({ token: result?.body?.token }));
       router.push('/profile');
     } catch (err) {

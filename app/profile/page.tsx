@@ -6,7 +6,7 @@ import { accounts } from '@/data/transaction'
 
 
 export default function Profile() {
-  
+
 
   return (
     <main className="bg-dark">

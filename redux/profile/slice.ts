@@ -4,10 +4,15 @@ export interface ResponseProfile {
   status: number;
   message: string;
   body: {
-  email: string;
+    email: string;
+    firstName: string;
+    lastName: string;
+  }
+}
+
+interface Profile {
   firstName: string;
   lastName: string;
-  }
 }
 interface ProfileState {
   email: string;
@@ -29,9 +34,8 @@ const profileSlice = createSlice({
   name: 'profile',
   initialState,
   reducers: {
-    setProfile: (state, action: PayloadAction<ResponseProfile>) => {
-      const { email, firstName, lastName } = action.payload.body;
-      state.email = email;
+    setProfile: (state, action: PayloadAction<Profile>) => {
+      const { firstName, lastName } = action.payload;
       state.firstName = firstName;
       state.lastName = lastName;
     },
@@ -46,7 +50,7 @@ const profileSlice = createSlice({
       state.firstName = '';
       state.lastName = '';
       state.error = null;
-    },
+    }
   },
 });
 

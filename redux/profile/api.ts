@@ -26,11 +26,14 @@ export const profileApi = createApi({
     },
   }),
   endpoints: (builder) => ({
-    getProfile: builder.query<ResponseProfile, void>({
-      query: () => ({
-        url: '/user/profile',
-        method: 'POST',
-      }),
+    getProfile: builder.mutation<ResponseProfile, void>({
+      query: () => {
+        console.log('getProfile')
+        return {
+          url: '/user/profile',
+          method: 'POST',
+        }
+      },
     }),
     updateProfile: builder.mutation<UserProfile, UpdateProfileRequest>({
       query: (profileData) => ({
@@ -39,7 +42,8 @@ export const profileApi = createApi({
         body: profileData,
       }),
     }),
+
   }),
 });
 
-export const { useGetProfileQuery, useUpdateProfileMutation } = profileApi;
+export const { useGetProfileMutation, useUpdateProfileMutation } = profileApi;

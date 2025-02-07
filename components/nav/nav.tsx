@@ -4,6 +4,7 @@ import Link from 'next/link';
 import './nav.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '@/redux/auth/slice';
+import { clearProfile } from '@/redux/profile/slice';
 
 const Nav = () => {
   // recuperer le token depuis le store avec useSelector
@@ -28,9 +29,9 @@ const Nav = () => {
           <Link href="/signin" className="main-nav-item">
             <i className="fa fa-user-circle"></i>
             Sign In
-          </Link> 
-          : 
-          <Link  onClick={() => dispatch(logout())} href="/" className="main-nav-item">
+          </Link>
+          :
+          <Link onClick={() => { dispatch(logout()); dispatch(clearProfile()) }} href="/" className="main-nav-item">
             {firstName}
             <i className="fa fa-sign-out"></i>
             Sign Out
