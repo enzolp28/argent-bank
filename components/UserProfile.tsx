@@ -6,6 +6,7 @@ import { setProfile } from '../redux/profile/slice';
 import { useSelector } from 'react-redux';
 import { RootState } from '../redux/store';
 import { useRouter } from 'next/navigation';
+import './styles/EditForm.css';
 
 
 const UserProfile = () => {
@@ -66,26 +67,25 @@ const UserProfile = () => {
     <div className="header">
       {isLoading ? <p>Loading...</p> :
         <>
-          <h1>Welcome back<br />{firstName} {lastName}!</h1>
+          <h1>Welcome back {firstName} {lastName}</h1>
 
           {/* <button className="edit-button" onClick={() => setIsEditing(!isEditing)} > */}
           {!isEditing ?
             <button className="edit-button" onClick={() => setIsEditing(!isEditing)} >
               Edit Name
             </button>
-            : <form onSubmit={handleUpdateProfile}>
-              Update <br />
-              <label htmlFor="firstName">Prénom</label>
-              <input type="text" value={firstNameInput} onChange={(e) => setFirstNameInput(e.target.value)} />
-              <br />
+            :
+            <form className='edit-form' onSubmit={handleUpdateProfile}>
+              <div className="edit-form_inputs">
 
-              <label htmlFor="lastName">Nom</label>
-              <input type="text" value={lastNameInput} onChange={(e) => setLastNameInput(e.target.value)} />
+                <input type="text" value={firstNameInput} onChange={(e) => setFirstNameInput(e.target.value)} />
 
-              <br />
-              <button type="submit"> {!isUpdating ? "Save" : "Saving..."}</button>
-
-              <button onClick={() => setIsEditing(false)}>Cancel</button>
+                <input type="text" value={lastNameInput} onChange={(e) => setLastNameInput(e.target.value)} />
+              </div>
+              <div className="edit-form_buttons">
+                <button type="submit"> {!isUpdating ? "Save" : "Saving..."}</button>
+                <button onClick={() => setIsEditing(false)}>Cancel</button>
+              </div>
             </form>}
         </>
       }

@@ -39,12 +39,7 @@ const profileSlice = createSlice({
       state.firstName = firstName;
       state.lastName = lastName;
     },
-    // setProfileLoading: (state, action: PayloadAction<boolean>) => {
-    //   state.loading = action.payload;
-    // },
-    // setProfileError: (state, action: PayloadAction<string | null>) => {
-    //   state.error = action.payload;
-    // },
+
     clearProfile: (state) => {
       state.email = '';
       state.firstName = '';

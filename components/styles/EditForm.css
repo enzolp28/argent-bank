@@ -1,0 +1,31 @@
+.edit-form_inputs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.edit-form_inputs input {
+    height: 25px;
+    width: 15%;
+    color: rgb(182, 177, 187);
+    font-size: 1rem;
+}
+
+.edit-form_buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.edit-form_buttons button {
+    width: 9%;
+    height: 25px;
+    margin-top: 10px;
+    background-color: #00bc77;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
