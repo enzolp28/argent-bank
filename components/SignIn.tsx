@@ -18,9 +18,16 @@ const SignIn = () => {
     e.preventDefault();
     try {
       const result = await login({ email: userEmail, password }).unwrap();
-      console.log("resuuuult", result);
-      console.log("token", result?.body?.token);
-      dispatch(setCredentials({ token: result?.body?.token }));
+      const token = result?.body?.token;
+      
+      // Store token based on remember me option
+      if (rememberMe) {
+        localStorage.setItem('token', token);
+      } else {
+        sessionStorage.setItem('token', token);
+      }
+      
+      dispatch(setCredentials({ token }));
       router.push('/profile');
     } catch (err) {
       console.error('Failed to sign in:', err);

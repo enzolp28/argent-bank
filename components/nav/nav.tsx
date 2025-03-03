@@ -31,7 +31,14 @@ const Nav = () => {
             Sign In
           </Link>
           :
-          <Link onClick={() => { dispatch(logout()); dispatch(clearProfile()) }} href="/" className="main-nav-item">
+          <Link onClick={() => {
+              // Clear storage
+              localStorage.removeItem('token');
+              sessionStorage.removeItem('token');
+              // Clear Redux state
+              dispatch(logout());
+              dispatch(clearProfile());
+            }} href="/" className="main-nav-item">
             {firstName}
             <i className="fa fa-sign-out"></i>
             Sign Out
