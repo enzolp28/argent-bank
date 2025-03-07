@@ -38,6 +38,11 @@ const UserProfile = () => {
       if (!updateError) {
         dispatch(setProfile({ firstName: firstNameInput, lastName: lastNameInput }));
         setIsEditing(false);
+        if(sessionStorage.getItem('token')) {
+          console.log('Profile updated successfully');
+          sessionStorage.setItem('firstName', firstName);
+          sessionStorage.setItem('lastName', lastName);
+      }
       }
     } catch (error) {
       console.error('Failed to update profile:', error);
@@ -55,6 +60,10 @@ const UserProfile = () => {
         dispatch(setProfile({ firstName: firstName, lastName: lastName }));
         setFirstNameInput(firstName);
         setLastNameInput(lastName);
+        if(sessionStorage.getItem('token')) {
+            sessionStorage.setItem('firstName', firstName);
+            sessionStorage.setItem('lastName', lastName);
+        }
       }
     }
     fetchProfile();

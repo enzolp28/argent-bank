@@ -20,12 +20,14 @@ const SignIn = () => {
       const result = await login({ email: userEmail, password }).unwrap();
       const token = result?.body?.token;
       
-      // Store token based on remember me option
+      // Si l'option se souvenir de moi  est cochée, la stocker dans localStorage
       if (rememberMe) {
-        localStorage.setItem('token', token);
-      } else {
+        // localStorage.setItem('token', token);
         sessionStorage.setItem('token', token);
+        
       }
+      // Toujours stocker dans sessionStorage pour la session actuelle
+      // sessionStorage.setItem('token', token);
       
       dispatch(setCredentials({ token }));
       router.push('/profile');

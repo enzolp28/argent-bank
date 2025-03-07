@@ -32,9 +32,8 @@ const Nav = () => {
           </Link>
           :
           <Link onClick={() => {
-              // Clear storage
-              localStorage.removeItem('token');
-              sessionStorage.removeItem('token');
+              // localStorage.removeItem('token');
+              sessionStorage.clear();
               // Clear Redux state
               dispatch(logout());
               dispatch(clearProfile());
