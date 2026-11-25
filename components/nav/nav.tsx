@@ -16,7 +16,7 @@ const Nav = () => {
     <nav className="main-nav">
       <Link href="/" className="main-nav-logo">
         <Image
-          src="/argentBankLogo.png"
+          src={`${process.env.NEXT_PUBLIC_GITHUB_PAGES === "true" ? "/argent-bank" : ""}/argentBankLogo.png`}
           alt="Argent Bank Logo"
           width={200}
           height={54}
