@@ -19,7 +19,7 @@ const HomePage: React.FC = () => {
         <h2 className="sr-only">Features</h2>
         <div className="feature-item">
           <Image 
-            src="/icon-chat.png"
+            src={`${process.env.NEXT_PUBLIC_GITHUB_PAGES === "true" ? "/argent-bank" : ""}/icon-chat.png`}
             alt="Chat Icon" 
             className="feature-icon"
             width={100}
@@ -33,7 +33,7 @@ const HomePage: React.FC = () => {
         </div>
         <div className="feature-item">
           <Image
-            src="/icon-money.png"
+            src={`${process.env.NEXT_PUBLIC_GITHUB_PAGES === "true" ? "/argent-bank" : ""}/icon-money.png`}
             alt="Money Icon"
             className="feature-icon"
             width={100}
@@ -46,7 +46,7 @@ const HomePage: React.FC = () => {
         </div>
         <div className="feature-item">
           <Image
-            src="/icon-security.png"
+            src={`${process.env.NEXT_PUBLIC_GITHUB_PAGES === "true" ? "/argent-bank" : ""}/icon-security.png`}
             alt="Security Icon"
             className="feature-icon"
             width={100}
