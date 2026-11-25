@@ -1,8 +1,8 @@
-import React from 'react'
+import type { FormEvent } from 'react'
 
 export const UserForm = () => {
 
-    function handleSubmit(e) {
+    function handleSubmit(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
     }
 

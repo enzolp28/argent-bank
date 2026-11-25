@@ -5,18 +5,19 @@ import './nav.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '@/redux/auth/slice';
 import { clearProfile } from '@/redux/profile/slice';
+import type { RootState } from '@/redux/store';
 
 const Nav = () => {
   // recuperer le token depuis le store avec useSelector
   const dispatch = useDispatch();
-  const { isAuthenticated } = useSelector((state) => state?.auth);
-  const { firstName } = useSelector((state) => state?.profile);
+  const { isAuthenticated } = useSelector((state: RootState) => state.auth);
+  const { firstName } = useSelector((state: RootState) => state.profile);
 
   return (
     <nav className="main-nav">
       <Link href="/" className="main-nav-logo">
         <Image
-          src="/argentBankLogo.png"
+          src={`${process.env.NEXT_PUBLIC_GITHUB_PAGES === "true" ? "/argent-bank" : ""}/argentBankLogo.png`}
           alt="Argent Bank Logo"
           width={200}
           height={54}

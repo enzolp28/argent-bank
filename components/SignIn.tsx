@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux';
 import { setCredentials } from '../redux/auth/slice';
 
 const SignIn = () => {
+  const demoMode = process.env.NEXT_PUBLIC_GITHUB_PAGES === 'true';
   const [userEmail, setUserEmail] = useState('tony@stark.com');
   const [password, setPassword] = useState('password123');
   const [rememberMe, setRememberMe] = useState(false);
@@ -16,6 +17,11 @@ const SignIn = () => {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    if (demoMode) {
+      dispatch(setCredentials({ token: 'portfolio-demo-only' }));
+      router.push('/profile');
+      return;
+    }
     try {
       const result = await login({ email: userEmail, password }).unwrap();
       const token = result?.body?.token;
@@ -40,6 +46,7 @@ const SignIn = () => {
     <>
       <i className="fa fa-user-circle sign-in-icon"></i>
       <h1>Sign In</h1>
+      {demoMode && <p role="status">Portfolio demonstration only. No real bank account or authentication. Click Explore Demo to continue.</p>}
       <form onSubmit={handleSubmit}>
         <div className="input-wrapper">
           <label htmlFor="email">Email</label>
@@ -74,7 +81,7 @@ const SignIn = () => {
           </div>
         )}
         <button type="submit" className="sign-in-button" disabled={isLoading}>
-          {isLoading ? 'Signing In...' : 'Sign In'}
+          {demoMode ? 'Explore Demo' : (isLoading ? 'Signing In...' : 'Sign In')}
         </button>
       </form>
     </>

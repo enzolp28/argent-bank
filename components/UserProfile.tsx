@@ -10,7 +10,8 @@ import './styles/EditForm.css';
 
 
 const UserProfile = () => {
-  const { isAuthenticated } = useSelector((state) => state?.auth);
+  const demoMode = process.env.NEXT_PUBLIC_GITHUB_PAGES === 'true';
+  const { isAuthenticated } = useSelector((state: RootState) => state.auth);
 
   const router = useRouter();
   useEffect(() => {
@@ -33,6 +34,11 @@ const UserProfile = () => {
 
   const handleUpdateProfile = async (e: FormEvent) => {
     e.preventDefault();
+    if (demoMode) {
+      dispatch(setProfile({ firstName: firstNameInput, lastName: lastNameInput }));
+      setIsEditing(false);
+      return;
+    }
     try {
       await updateProfile({ firstName: firstNameInput, lastName: lastNameInput });
       if (!updateError) {
@@ -52,6 +58,14 @@ const UserProfile = () => {
 
 
   useEffect(() => {
+    if (demoMode) {
+      const firstName = 'Tony';
+      const lastName = 'Jarvis';
+      dispatch(setProfile({ firstName, lastName }));
+      setFirstNameInput(firstName);
+      setLastNameInput(lastName);
+      return;
+    }
     async function fetchProfile() {
       const result = await getProfile().unwrap();
 
@@ -77,6 +91,7 @@ const UserProfile = () => {
       {isLoading ? <p>Loading...</p> :
         <>
           <h1>Welcome back {firstName} {lastName}</h1>
+          {demoMode && <p role="status">Portfolio demo: fictional profile and balances; no banking transactions.</p>}
 
           {/* <button className="edit-button" onClick={() => setIsEditing(!isEditing)} > */}
           {!isEditing ?

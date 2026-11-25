@@ -6,7 +6,7 @@ interface LoginRequest {
 }
 
 interface LoginResponse {
-  token: string;
+  body: { token: string };
 }
 
 export const authApi = createApi({
