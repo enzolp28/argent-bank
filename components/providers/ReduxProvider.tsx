@@ -18,7 +18,7 @@ export default function ReduxProvider({ children }: ReduxProviderProps) {
       store.dispatch(setCredentials({ token }));
       const firstName = sessionStorage.getItem('firstName');
       const lastName = sessionStorage.getItem('lastName');
-      store.dispatch(setProfile({ firstName, lastName }));
+      store.dispatch(setProfile({ firstName: firstName ?? '', lastName: lastName ?? '' }));
     }
   }, []);
 
