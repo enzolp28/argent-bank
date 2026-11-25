@@ -11,7 +11,7 @@ import './styles/EditForm.css';
 
 const UserProfile = () => {
   const demoMode = process.env.NEXT_PUBLIC_GITHUB_PAGES === 'true';
-  const { isAuthenticated } = useSelector((state) => state?.auth);
+  const { isAuthenticated } = useSelector((state: RootState) => state.auth);
 
   const router = useRouter();
   useEffect(() => {
